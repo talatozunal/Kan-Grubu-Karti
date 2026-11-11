@@ -3,11 +3,14 @@ import SwiftUI
 // MARK: - KAN GRUBU SEÇİCİ
 
 struct KanGrubuSecici: View {
+    @EnvironmentObject private var dil: Yerellestirme
+
     @Binding var secilenKanGrubu: String
 
+    // Kan grubu gösterimi uluslararası "Rh" gösterimidir; çeviri gerektirmez.
     private let kanGruplari = [
-        "A Grubu RH +", "B Grubu RH +", "AB Grubu RH +", "O Grubu RH +",
-        "A Grubu RH -", "B Grubu RH -", "AB Grubu RH -", "O Grubu RH -"
+        "A Rh+", "B Rh+", "AB Rh+", "O Rh+",
+        "A Rh−", "B Rh−", "AB Rh−", "O Rh−"
     ]
 
     var body: some View {
@@ -25,7 +28,7 @@ struct KanGrubuSecici: View {
             }
         } label: {
             HStack(spacing: 8) {
-                Text(secilenKanGrubu.isEmpty ? "Kan grubu seçin" : secilenKanGrubu)
+                Text(secilenKanGrubu.isEmpty ? dil.metin("kg.kanGrubuSec") : secilenKanGrubu)
                     .font(.system(size: 16, weight: .medium, design: .rounded))
                     .foregroundStyle(secilenKanGrubu.isEmpty ? Tema.ikincil : Tema.metin)
                     .lineLimit(1)

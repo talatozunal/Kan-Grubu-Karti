@@ -4,13 +4,15 @@ import UIKit
 // MARK: - KART EKRANI
 
 struct ikinciSayfa: View {
+    @EnvironmentObject private var dil: Yerellestirme
+    @Environment(\.dismiss) private var kapat
+
     var name: String
     var ionayDr: String
     var idYeri: String
     var idTarihi = Date()
     var ikangrubu: String
 
-    @Environment(\.dismiss) private var kapat
     @State private var kartResmi: UIImage?
 
     // Kart her zaman beyaz zeminli; karanlık modda da okunaklı kalsın diye sabit renkler.
@@ -25,7 +27,6 @@ struct ikinciSayfa: View {
         }
         .toolbar(.hidden, for: .navigationBar)
         .task { kartResmi = renderKarti() }
-        .environment(\.locale, Locale(identifier: "tr_TR"))
     }
 
     // MARK: Çerçeve
@@ -98,11 +99,11 @@ struct ikinciSayfa: View {
             .buttonStyle(.plain)
 
             VStack(alignment: .leading, spacing: 1) {
-                Text("Kartınız hazır")
+                Text(dil.metin("kg.kartHazir"))
                     .font(.system(size: 16, weight: .bold, design: .rounded))
                     .foregroundStyle(Tema.metin)
 
-                Text("Önizleyin, kaydedin veya paylaşın")
+                Text(dil.metin("kg.kartAlt"))
                     .font(.system(size: 11, weight: .medium, design: .rounded))
                     .foregroundStyle(Tema.ikincil)
             }
@@ -148,11 +149,11 @@ struct ikinciSayfa: View {
     private var paylasButonu: some View {
         if let kartResmi {
             ShareLink(item: Image(uiImage: kartResmi),
-                      preview: SharePreview("Kan Grubu Kartı",
+                      preview: SharePreview(dil.metin("kg.kartPaylasimBaslik"),
                                             image: Image(uiImage: kartResmi))) {
                 HStack(spacing: 8) {
                     Image(systemName: "square.and.arrow.up")
-                    Text("Kartı Paylaş veya Kaydet")
+                    Text(dil.metin("kg.paylas"))
                 }
                 .font(.system(size: 15, weight: .bold, design: .rounded))
                 .foregroundStyle(.white)
@@ -166,7 +167,7 @@ struct ikinciSayfa: View {
     }
 
     private var ipucu: some View {
-        Text("Kart, paylaşım sayfasından Fotoğraflar'a kaydedilebilir.")
+        Text(dil.metin("kg.paylasIpucu"))
             .font(.system(size: 11, weight: .medium, design: .rounded))
             .foregroundStyle(Tema.ikincil.opacity(0.85))
             .multilineTextAlignment(.center)
@@ -189,9 +190,11 @@ struct ikinciSayfa: View {
                         .foregroundStyle(kartKirmizi)
                 }
 
-                Text("Kayakyolu Aile Sağlık Merkezi")
+                Text(dil.metin("kg.kartMerkez"))
                     .font(.system(size: 13, weight: .semibold, design: .rounded))
                     .foregroundStyle(kartMetin)
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.75)
 
                 Spacer(minLength: 0)
 
@@ -200,23 +203,28 @@ struct ikinciSayfa: View {
                     .foregroundStyle(kartKirmizi.opacity(0.55))
             }
 
-            Text("Kan Grubu Kartı")
+            Text(dil.metin("kg.kartBaslik"))
                 .font(.system(size: 27, weight: .bold, design: .rounded))
                 .foregroundStyle(kartKirmizi)
+                .lineLimit(1)
+                .minimumScaleFactor(0.7)
 
             Rectangle()
                 .fill(kartKirmizi.opacity(0.15))
                 .frame(height: 1)
 
-            satir("Adı Soyadı", deger(name))
-            satir("Doğum Tarihi", idTarihi.formatted(.dateTime.day().month(.twoDigits).year()))
-            satir("Doğum Yeri", deger(idYeri))
+            satir(dil.metin("kg.kartAdSoyad"), deger(name))
+            satir(dil.metin("kg.kartDogumTarihi"),
+                  idTarihi.formatted(.dateTime.day().month(.twoDigits).year().locale(dil.locale)))
+            satir(dil.metin("kg.kartDogumYeri"), deger(idYeri))
 
             HStack(spacing: 8) {
-                Text("Kan Grubu")
-                    .font(.system(size: 11, weight: .semibold, design: .rounded))
+                Text(dil.metin("kg.kartKanGrubu"))
+                    .font(.system(size: 10.5, weight: .semibold, design: .rounded))
                     .foregroundStyle(kartIkincil)
-                    .frame(width: 86, alignment: .leading)
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.75)
+                    .frame(width: 104, alignment: .leading)
 
                 Text(deger(ikangrubu))
                     .font(.system(size: 14, weight: .bold, design: .rounded))
@@ -229,7 +237,7 @@ struct ikinciSayfa: View {
                 Spacer(minLength: 0)
             }
 
-            satir("Onaylayan", deger(ionayDr))
+            satir(dil.metin("kg.kartOnaylayan"), deger(ionayDr))
         }
         .padding(18)
         .frame(width: 400, height: 250, alignment: .topLeading)
@@ -244,9 +252,11 @@ struct ikinciSayfa: View {
     private func satir(_ etiket: String, _ icerik: String) -> some View {
         HStack(spacing: 8) {
             Text(etiket)
-                .font(.system(size: 11, weight: .semibold, design: .rounded))
+                .font(.system(size: 10.5, weight: .semibold, design: .rounded))
                 .foregroundStyle(kartIkincil)
-                .frame(width: 86, alignment: .leading)
+                .lineLimit(1)
+                .minimumScaleFactor(0.75)
+                .frame(width: 104, alignment: .leading)
 
             Text(icerik)
                 .font(.system(size: 12.5, weight: .semibold, design: .rounded))

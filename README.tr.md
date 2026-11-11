@@ -6,7 +6,8 @@
 
 <p align="center">
   Kan grubunuzu ve temel kimlik bilgilerinizi temiz, paylaşılabilir bir karta dönüştürün.<br>
-  Formu bir kez doldurun, kartı önizleyin; Fotoğraflar'a kaydedin veya mesajla gönderin.
+  Formu bir kez doldurun, kartı önizleyin; Fotoğraflar'a kaydedin veya mesajla gönderin.<br>
+  Türkçe, İngilizce, Almanca, Fransızca ve İtalyanca olarak kullanılabilir.
 </p>
 
 <p align="center">
@@ -60,13 +61,13 @@ Bu bir kolaylık aracıdır; **resmî kimlik veya tıbbi belge değildir**.
 </p>
 
 <p align="center">
-  <sub>Sürüm, yıl, sorumlu ve iletişim bilgisini gösteren bilgi paneli</sub>
+  <sub>Sürüm, yıl, sorumlu, dil seçici ve iletişim bilgisini gösteren bilgi paneli</sub>
 </p>
 
 ## Özellikler
 
 - **Beş alanlı form** — ad soyad, doğum yeri, doğum tarihi, kan grubu ve onaylayan hekim.
-- **Sekiz kan grubu** — A, B, AB ve O'nun RH+ ve RH− seçenekleri, yerel menüden seçilir.
+- **Sekiz kan grubu** — A, B, AB ve O'nun Rh+ ve Rh− seçenekleri, yerel menüden seçilir. Kartta uluslararası gösterim kullanılır, ör. `AB Rh+`.
 - **Canlı kart önizlemesi** — kart `ImageRenderer` ile 3× oluşturulur ve ekrana ölçeklenerek gösterilir.
 - **Paylaş veya kaydet** — `ShareLink` sistem paylaşım sayfasını kart görseliyle açar; “Görseli Kaydet” ile Fotoğraflar'a eklenir.
 - **Okunaklı kart tasarımı** — beyaz zemin, kırmızı çerçeve, sağlık merkezi başlığı, etiketli satırlar ve kan grubu rozeti.
@@ -75,9 +76,26 @@ Bu bir kolaylık aracıdır; **resmî kimlik veya tıbbi belge değildir**.
 - **Tek çerçeve düzeni** — tek yuvarlatılmış kart, ortalanmış, en fazla 620 pt genişlik; hiçbir cihazda yatay taşma olmaz.
 - **Açık ve koyu mod** — uygulama arayüzü uyum sağlar; paylaşılan kart yazdırma için her zaman beyaz kalır.
 - **Bilgi barı** — alt kenardaki ince şerit; sürüm, yıl, sorumlu, iletişim ve “Kapat” butonunu içeren paneli açar.
-- **Türkçe arayüz** — uygulama tasarım gereği Türkçe (`tr_TR`) yerelleştirilmiştir.
+- **Beş dil** — Türkçe, İngilizce, Almanca, Fransızca ve İtalyanca; bilgi panelinden uygulama yeniden başlatılmadan değiştirilebilir.
+
+## Diller
+
+Arayüz **Türkçe, İngilizce, Almanca, Fransızca ve İtalyanca** olarak kullanılabilir. İlk açılışta cihaz dili esas alınır; dilediğiniz zaman **Bilgi → Dil** bölümünden uygulamayı yeniden başlatmadan değiştirebilirsiniz. Seçim `UserDefaults` (anahtar: `appLanguage`) içinde saklanır; form, kart etiketleri, tarihler ve paylaşım sayfası anında güncellenir. Kan grubu değerleri evrensel gösterimi (`A Rh+`, `AB Rh−`, …) kullandığı için çeviri gerektirmez.
+
+Geliştirme dili Türkçe olduğu için yedek dil de Türkçedir: seçili dilde bir anahtar eksikse Türkçe metin gösterilir.
+
+### Yeni dil ekleme
+
+1. `<kod>.lproj` klasörlerinden birini (örneğin `en.lproj`) kopyalayıp yeni dil koduna göre adlandırın.
+2. `Localizable.strings` ve `InfoPlist.strings` dosyalarını anahtarları değiştirmeden çevirin.
+3. `Dil.swift` içindeki `Yerellestirme.desteklenenDiller` listesine kodu, `UygulamaDili` enum'una da bir case ekleyin.
+4. Xcode projesindeki `knownRegions` listesine dili ekleyin.
+
+Storyboard veya görsel değişikliği gerekmez.
 
 ## Nasıl kullanılır?
+
+Bu belgedeki buton adları Türkçe gösterilmiştir; uygulama seçili dilde aynı terimleri kullanır.
 
 1. Uygulamayı açın ve **Ad Soyad**, **Doğum Yeri**, **Doğum Tarihi**, **Kan Grubu** ve **Onaylayan** alanlarını doldurun.
 2. **Kartı Göster** butonuna dokunun. Kart önizlemesi ekranın ortasında görünür.
@@ -85,6 +103,7 @@ Bu bir kolaylık aracıdır; **resmî kimlik veya tıbbi belge değildir**.
 4. Paylaşım sayfasında **Görseli Kaydet** ile Fotoğraflar'a kaydedin veya Mesajlar, Mail ya da AirDrop ile gönderin.
 5. Farklı bir kart oluşturmak için geri okuyla dönüp alanları düzenleyin.
 6. Sürüm ve iletişim bilgileri için alttaki **Bilgi** barına dokunun.
+7. Dili değiştirmek için **Bilgi** barına dokunun, **Dil** bölümünden bir dil seçin ve paneli kapatın — form ve kart anında güncellenir.
 
 ### Kart içeriği
 
@@ -93,9 +112,9 @@ Bu bir kolaylık aracıdır; **resmî kimlik veya tıbbi belge değildir**.
 | Üst başlık | “Kayakyolu Aile Sağlık Merkezi” |
 | Kart başlığı | “Kan Grubu Kartı” |
 | Adı Soyadı | Ad soyad alanı |
-| Doğum Tarihi | Tarih seçici, `dd.MM.yyyy` biçiminde |
+| Doğum Tarihi | Tarih seçici, seçili dile göre biçimlendirilir |
 | Doğum Yeri | Doğum yeri alanı |
-| Kan Grubu | Seçilen kan grubu, kırmızı rozet olarak |
+| Kan Grubu | Seçilen kan grubu, kırmızı rozet olarak (ör. `AB Rh+`) |
 | Onaylayan | Onaylayan hekim alanı |
 
 ## Veri ve gizlilik
@@ -110,6 +129,7 @@ Ana çerçevenin altındaki şerit kalıcı ve küçüktür. Dokunulduğunda şu
 
 - “Bu uygulama herhangi bir ücret talep etmemektedir. Geliştirme aşamasındadır.”
 - Sürüm **1.0.0**, yıl **2026**, sorumlu **Talat Özünal**
+- Anında uygulanan bir dil seçici (**Sistem** ve beş dil)
 - İletişim: **ozunaltalat@gmail.com** (Mail uygulamasını açar)
 - **Kapat** butonu
 
@@ -138,6 +158,8 @@ Kan Grubu Kartı/
 │   ├── KanGrubuSyf.swift         # Kan grubu seçici
 │   ├── İkiniSayfa.swift          # Kart tasarımı, oluşturma ve paylaşım
 │   ├── BilgiBari.swift           # Bilgi barı + bilgi paneli
+│   ├── Dil.swift                 # Dil yöneticisi + dil seçici
+│   ├── tr.lproj … it.lproj/      # Localizable.strings + InfoPlist.strings
 │   └── Assets.xcassets           # Uygulama simgesi ve vurgu rengi
 ├── docs/
 │   ├── icon.png
@@ -153,6 +175,7 @@ Kan Grubu Kartı/
 - `KanGrubuSecici` — sekiz kan grubu için yerel menü.
 - `ikinciSayfa` — kart düzeni, `ImageRenderer` çıktısı ve paylaşım butonu.
 - `BilgiBari` / `BilgiSayfasi` — alt bar ve bilgi paneli.
+- `Yerellestirme` / `DilSecici` — `UserDefaults` içinde saklanan dil seçimi ve uygulama içi dil menüsü.
 
 ## Gereksinimler
 
@@ -185,7 +208,7 @@ xcodebuild -project "Kan Grubu Kartı.xcodeproj" \
 - Uygulama girilen bilgileri doğrulamaz. Kart, yalnızca yazdığınız kadar doğrudur.
 - Onaylayan hekim alanı serbest metindir; kart o hekim tarafından doğrulanmış veya imzalanmış sayılmaz.
 - Kayıtlı kart geçmişi yoktur — ihtiyaç duyduğunuzda görseli yeniden oluşturun.
-- “Kayakyolu Aile Sağlık Merkezi” başlığı kart tasarımının parçasıdır; farklı bir kurum kullanıyorsanız `İkiniSayfa.swift` içinde değiştirebilirsiniz.
+- “Kayakyolu Aile Sağlık Merkezi” başlığı kart tasarımının parçasıdır; farklı bir kurum kullanıyorsanız her dilin `Localizable.strings` dosyasındaki `kg.kartMerkez` anahtarını değiştirebilirsiniz.
 - Proje geliştirme aşamasındadır; uygulama içindeki bilgi paneli de bunu belirtir.
 
 ## Sorumluluk reddi

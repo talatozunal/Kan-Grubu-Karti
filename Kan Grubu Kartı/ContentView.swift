@@ -45,6 +45,8 @@ private extension UIColor {
 // MARK: - GİRİŞ EKRANI
 
 struct ContentView: View {
+    @EnvironmentObject private var dil: Yerellestirme
+
     @State private var adSoyad = ""
     @State private var dogumYeri = ""
     @State private var dogumTarihi = Date()
@@ -62,7 +64,7 @@ struct ContentView: View {
             .toolbar {
                 ToolbarItemGroup(placement: .keyboard) {
                     Spacer()
-                    Button("Bitti") {
+                    Button(dil.metin("ortak.bitti")) {
                         UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder),
                                                         to: nil, from: nil, for: nil)
                     }
@@ -74,7 +76,6 @@ struct ContentView: View {
             }
         }
         .tint(Tema.anaRenk)
-        .environment(\.locale, Locale(identifier: "tr_TR"))
     }
 
     // MARK: Çerçeve
@@ -144,11 +145,11 @@ struct ContentView: View {
                     .foregroundStyle(.white)
             }
 
-            Text("Kan Grubu Kartı")
+            Text(dil.metin("kg.baslik"))
                 .font(.system(size: 20, weight: .bold, design: .rounded))
                 .foregroundStyle(Tema.metin)
 
-            Text("Bilgileri girin, kartınızı oluşturup paylaşın.")
+            Text(dil.metin("kg.altbaslik"))
                 .font(.system(size: 11.5, weight: .medium, design: .rounded))
                 .foregroundStyle(Tema.ikincil)
                 .multilineTextAlignment(.center)
@@ -166,22 +167,22 @@ struct ContentView: View {
 
     private var bilgiKarti: some View {
         VStack(alignment: .leading, spacing: 12) {
-            BolumBasligi(ikon: "person.text.rectangle.fill", baslik: "KİŞİ BİLGİLERİ")
+            BolumBasligi(ikon: "person.text.rectangle.fill", baslik: dil.metin("kg.kisiBilgileri"))
 
-            AlanSatiri(baslik: "Ad Soyad",
-                       placeholder: "Ad ve soyad girin",
+            AlanSatiri(baslik: dil.metin("kg.adSoyad"),
+                       placeholder: dil.metin("kg.adSoyadIpucu"),
                        metin: $adSoyad)
 
-            AlanSatiri(baslik: "Doğum Yeri",
-                       placeholder: "Doğum yeri girin",
+            AlanSatiri(baslik: dil.metin("kg.dogumYeri"),
+                       placeholder: dil.metin("kg.dogumYeriIpucu"),
                        metin: $dogumYeri)
 
             VStack(alignment: .leading, spacing: 5) {
-                Text("Doğum Tarihi")
+                Text(dil.metin("kg.dogumTarihi"))
                     .font(.system(size: 11, weight: .semibold, design: .rounded))
                     .foregroundStyle(Tema.ikincil)
 
-                DatePicker("Doğum Tarihi",
+                DatePicker(dil.metin("kg.dogumTarihi"),
                            selection: $dogumTarihi,
                            displayedComponents: .date)
                     .labelsHidden()
@@ -198,15 +199,15 @@ struct ContentView: View {
             }
 
             VStack(alignment: .leading, spacing: 5) {
-                Text("Kan Grubu")
+                Text(dil.metin("kg.kanGrubu"))
                     .font(.system(size: 11, weight: .semibold, design: .rounded))
                     .foregroundStyle(Tema.ikincil)
 
                 KanGrubuSecici(secilenKanGrubu: $kanGrubu)
             }
 
-            AlanSatiri(baslik: "Onaylayan",
-                       placeholder: "Onaylayan hekimin adı",
+            AlanSatiri(baslik: dil.metin("kg.onaylayan"),
+                       placeholder: dil.metin("kg.onaylayanIpucu"),
                        metin: $onaylayan)
         }
         .padding(16)
@@ -229,7 +230,7 @@ struct ContentView: View {
         } label: {
             HStack(spacing: 8) {
                 Image(systemName: "rectangle.portrait.on.rectangle.portrait.fill")
-                Text("Kartı Göster")
+                Text(dil.metin("kg.kartiGoster"))
             }
             .font(.system(size: 16, weight: .bold, design: .rounded))
             .foregroundStyle(.white)
@@ -243,7 +244,7 @@ struct ContentView: View {
     }
 
     private var ipucu: some View {
-        Text("Boşlukları doldurup kontrol ediniz.")
+        Text(dil.metin("kg.ipucu"))
             .font(.system(size: 11, weight: .medium, design: .rounded))
             .foregroundStyle(Tema.ikincil.opacity(0.85))
             .frame(maxWidth: .infinity)
@@ -304,4 +305,5 @@ struct AlanSatiri: View {
 
 #Preview {
     ContentView()
+        .environmentObject(Yerellestirme())
 }
