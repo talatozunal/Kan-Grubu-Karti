@@ -12,6 +12,7 @@ struct ikinciSayfa: View {
     var idYeri: String
     var idTarihi = Date()
     var ikangrubu: String
+    var merkez: String
 
     @State private var kartResmi: UIImage?
 
@@ -190,11 +191,11 @@ struct ikinciSayfa: View {
                         .foregroundStyle(kartKirmizi)
                 }
 
-                Text(dil.metin("kg.kartMerkez"))
+                Text(deger(merkez))
                     .font(.system(size: 13, weight: .semibold, design: .rounded))
                     .foregroundStyle(kartMetin)
                     .lineLimit(1)
-                    .minimumScaleFactor(0.75)
+                    .minimumScaleFactor(0.65)
 
                 Spacer(minLength: 0)
 

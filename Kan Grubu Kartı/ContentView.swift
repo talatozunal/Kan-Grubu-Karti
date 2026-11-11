@@ -47,6 +47,7 @@ private extension UIColor {
 struct ContentView: View {
     @EnvironmentObject private var dil: Yerellestirme
 
+    @State private var saglikMerkezi = ""
     @State private var adSoyad = ""
     @State private var dogumYeri = ""
     @State private var dogumTarihi = Date()
@@ -169,6 +170,10 @@ struct ContentView: View {
         VStack(alignment: .leading, spacing: 12) {
             BolumBasligi(ikon: "person.text.rectangle.fill", baslik: dil.metin("kg.kisiBilgileri"))
 
+            AlanSatiri(baslik: dil.metin("kg.saglikMerkezi"),
+                       placeholder: dil.metin("kg.saglikMerkeziIpucu"),
+                       metin: $saglikMerkezi)
+
             AlanSatiri(baslik: dil.metin("kg.adSoyad"),
                        placeholder: dil.metin("kg.adSoyadIpucu"),
                        metin: $adSoyad)
@@ -226,7 +231,8 @@ struct ContentView: View {
                         ionayDr: onaylayan,
                         idYeri: dogumYeri,
                         idTarihi: dogumTarihi,
-                        ikangrubu: kanGrubu)
+                        ikangrubu: kanGrubu,
+                        merkez: saglikMerkezi)
         } label: {
             HStack(spacing: 8) {
                 Image(systemName: "rectangle.portrait.on.rectangle.portrait.fill")

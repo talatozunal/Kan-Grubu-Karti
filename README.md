@@ -25,7 +25,7 @@
 
 ## Overview
 
-**Kan Grubu Kartı** (Turkish for *Blood Group Card*) is a small SwiftUI app that creates a personal blood group card. You enter your name, place and date of birth, blood group and the approving doctor; the app renders a card as a high-resolution image that can be saved to Photos or shared with family, school, workplace or an emergency contact.
+**Kan Grubu Kartı** (Turkish for *Blood Group Card*) is a small SwiftUI app that creates a personal blood group card. You enter the health centre, your name, place and date of birth, blood group and the approving doctor; the app renders a card as a high-resolution image that can be saved to Photos or shared with family, school, workplace or an emergency contact.
 
 The card is not a replacement for an official medical document. It is a quick, readable summary designed to be kept on a phone or printed from the shared image.
 
@@ -35,7 +35,7 @@ In an emergency, blood group is one of the first things a responder may need —
 
 This app makes a **personal, clearly-labelled card** that is easy to regenerate and easy to share:
 
-- **Fill once** — five short fields.
+- **Fill once** — six short fields.
 - **Preview instantly** — the card is rendered at 3× (1200 × 750 px) for crisp text when printed or zoomed.
 - **Share anywhere** — the iOS share sheet covers Messages, Mail, AirDrop, Photos and printing.
 - **No account** — nothing is uploaded; the card exists only while you use the app.
@@ -66,7 +66,7 @@ It is a convenience tool, **not** an official identity or medical document.
 
 ## Features
 
-- **Five-field form** — name, place of birth, date of birth, blood group and approving doctor.
+- **Six-field form** — health centre, name, place of birth, date of birth, blood group and approving doctor.
 - **Eight blood groups** — A, B, AB and O, each with Rh+ and Rh−, chosen from a native menu. The card uses the international notation, e.g. `AB Rh+`.
 - **Live card preview** — the card is rendered with `ImageRenderer` at 3× and shown scaled to the screen.
 - **Share or save** — `ShareLink` opens the system share sheet with the card image; “Save Image” puts it in Photos.
@@ -97,7 +97,7 @@ No storyboard or asset changes are needed.
 
 Button names in this README are shown in Turkish; the app uses the same terms in the selected language.
 
-1. Open the app and fill in **Ad Soyad**, **Doğum Yeri**, **Doğum Tarihi**, **Kan Grubu** and **Onaylayan**.
+1. Open the app and fill in **Sağlık Merkezi**, **Ad Soyad**, **Doğum Yeri**, **Doğum Tarihi**, **Kan Grubu** and **Onaylayan**.
 2. Tap **Kartı Göster**. The card preview appears, centered on the screen.
 3. Tap **Kartı Paylaş veya Kaydet**.
 4. In the share sheet choose **Save Image** to keep it in Photos, or send it via Messages, Mail or AirDrop.
@@ -109,7 +109,7 @@ Button names in this README are shown in Turkish; the app uses the same terms in
 
 | Row | Source |
 |---|---|
-| Header | “Kayakyolu Aile Sağlık Merkezi” |
+| Sağlık Merkezi | Health centre field (shown as the card header) |
 | Title | “Kan Grubu Kartı” |
 | Adı Soyadı | Name field |
 | Doğum Tarihi | Date picker, formatted according to the selected language |
@@ -208,7 +208,7 @@ xcodebuild -project "Kan Grubu Kartı.xcodeproj" \
 - The app does not verify the entered information. The card is only as accurate as what you type.
 - The approving doctor field is free text; the card is not validated or signed by that person.
 - There is no saved-card history — regenerate the image whenever you need it.
-- The header “Kayakyolu Aile Sağlık Merkezi” is part of the card design; it is translated in each `Localizable.strings` (key `kg.kartMerkez`) if you use a different institution.
+- The card header comes from the **Sağlık Merkezi** field; no institution is hardcoded, so the same build works for any clinic or workplace.
 - The project is under active development; the in-app info sheet says so.
 
 ## Disclaimer

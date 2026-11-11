@@ -25,7 +25,7 @@
 
 ## Genel bakış
 
-**Kan Grubu Kartı**, kişisel bir kan grubu kartı oluşturan küçük bir SwiftUI uygulamasıdır. Ad soyad, doğum yeri, doğum tarihi, kan grubu ve onaylayan hekim bilgilerini girersiniz; uygulama kartı yüksek çözünürlüklü bir görsel olarak oluşturur. Görsel Fotoğraflar'a kaydedilebilir veya aile, okul, iş yeri ya da acil durum kişisiyle paylaşılabilir.
+**Kan Grubu Kartı**, kişisel bir kan grubu kartı oluşturan küçük bir SwiftUI uygulamasıdır. Sağlık merkezi, ad soyad, doğum yeri, doğum tarihi, kan grubu ve onaylayan hekim bilgilerini girersiniz; uygulama kartı yüksek çözünürlüklü bir görsel olarak oluşturur. Görsel Fotoğraflar'a kaydedilebilir veya aile, okul, iş yeri ya da acil durum kişisiyle paylaşılabilir.
 
 Kart, resmî bir tıbbi belgenin yerini tutmaz. Telefonda taşınmak veya paylaşılan görselden yazdırılmak üzere tasarlanmış, hızlı ve okunaklı bir özettir.
 
@@ -35,7 +35,7 @@ Acil bir durumda kan grubu, müdahale eden kişinin ilk ihtiyaç duyabileceği b
 
 Bu uygulama, **yeniden oluşturulması ve paylaşılması kolay, açıkça etiketlenmiş kişisel bir kart** sunar:
 
-- **Bir kez doldur** — beş kısa alan.
+- **Bir kez doldur** — altı kısa alan.
 - **Anında önizle** — kart, yazdırıldığında veya yakınlaştırıldığında net görünsün diye 3× (1200 × 750 px) oluşturulur.
 - **Her yerde paylaş** — iOS paylaşım sayfası Mesajlar, Mail, AirDrop, Fotoğraflar ve yazdırmayı kapsar.
 - **Hesap yok** — hiçbir şey yüklenmez; kart yalnızca uygulamayı kullandığınız sürece vardır.
@@ -66,7 +66,7 @@ Bu bir kolaylık aracıdır; **resmî kimlik veya tıbbi belge değildir**.
 
 ## Özellikler
 
-- **Beş alanlı form** — ad soyad, doğum yeri, doğum tarihi, kan grubu ve onaylayan hekim.
+- **Altı alanlı form** — sağlık merkezi, ad soyad, doğum yeri, doğum tarihi, kan grubu ve onaylayan hekim.
 - **Sekiz kan grubu** — A, B, AB ve O'nun Rh+ ve Rh− seçenekleri, yerel menüden seçilir. Kartta uluslararası gösterim kullanılır, ör. `AB Rh+`.
 - **Canlı kart önizlemesi** — kart `ImageRenderer` ile 3× oluşturulur ve ekrana ölçeklenerek gösterilir.
 - **Paylaş veya kaydet** — `ShareLink` sistem paylaşım sayfasını kart görseliyle açar; “Görseli Kaydet” ile Fotoğraflar'a eklenir.
@@ -97,7 +97,7 @@ Storyboard veya görsel değişikliği gerekmez.
 
 Bu belgedeki buton adları Türkçe gösterilmiştir; uygulama seçili dilde aynı terimleri kullanır.
 
-1. Uygulamayı açın ve **Ad Soyad**, **Doğum Yeri**, **Doğum Tarihi**, **Kan Grubu** ve **Onaylayan** alanlarını doldurun.
+1. Uygulamayı açın ve **Sağlık Merkezi**, **Ad Soyad**, **Doğum Yeri**, **Doğum Tarihi**, **Kan Grubu** ve **Onaylayan** alanlarını doldurun.
 2. **Kartı Göster** butonuna dokunun. Kart önizlemesi ekranın ortasında görünür.
 3. **Kartı Paylaş veya Kaydet** butonuna dokunun.
 4. Paylaşım sayfasında **Görseli Kaydet** ile Fotoğraflar'a kaydedin veya Mesajlar, Mail ya da AirDrop ile gönderin.
@@ -109,7 +109,7 @@ Bu belgedeki buton adları Türkçe gösterilmiştir; uygulama seçili dilde ayn
 
 | Satır | Kaynak |
 |---|---|
-| Üst başlık | “Kayakyolu Aile Sağlık Merkezi” |
+| Sağlık Merkezi | Sağlık merkezi alanı (kartın üst başlığı olarak gösterilir) |
 | Kart başlığı | “Kan Grubu Kartı” |
 | Adı Soyadı | Ad soyad alanı |
 | Doğum Tarihi | Tarih seçici, seçili dile göre biçimlendirilir |
@@ -208,7 +208,7 @@ xcodebuild -project "Kan Grubu Kartı.xcodeproj" \
 - Uygulama girilen bilgileri doğrulamaz. Kart, yalnızca yazdığınız kadar doğrudur.
 - Onaylayan hekim alanı serbest metindir; kart o hekim tarafından doğrulanmış veya imzalanmış sayılmaz.
 - Kayıtlı kart geçmişi yoktur — ihtiyaç duyduğunuzda görseli yeniden oluşturun.
-- “Kayakyolu Aile Sağlık Merkezi” başlığı kart tasarımının parçasıdır; farklı bir kurum kullanıyorsanız her dilin `Localizable.strings` dosyasındaki `kg.kartMerkez` anahtarını değiştirebilirsiniz.
+- Kartın üst başlığı **Sağlık Merkezi** alanından gelir; sabit bir kurum adı yoktur, bu yüzden aynı sürüm her klinik veya iş yeri için kullanılabilir.
 - Proje geliştirme aşamasındadır; uygulama içindeki bilgi paneli de bunu belirtir.
 
 ## Sorumluluk reddi
