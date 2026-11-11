@@ -225,6 +225,10 @@ struct ContentView: View {
         .shadow(color: Color.black.opacity(0.06), radius: 16, x: 0, y: 8)
     }
 
+    private var kartHazir: Bool {
+        !saglikMerkezi.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+    }
+
     private var kartButonu: some View {
         NavigationLink {
             ikinciSayfa(name: adSoyad,
@@ -244,15 +248,19 @@ struct ContentView: View {
             .padding(.vertical, 14)
             .background(Tema.anaGecis)
             .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
-            .shadow(color: Tema.anaRenk.opacity(0.30), radius: 10, x: 0, y: 6)
+            .shadow(color: Tema.anaRenk.opacity(kartHazir ? 0.30 : 0),
+                    radius: 10, x: 0, y: 6)
+            .opacity(kartHazir ? 1 : 0.45)
         }
         .buttonStyle(.plain)
+        .disabled(!kartHazir)
     }
 
     private var ipucu: some View {
-        Text(dil.metin("kg.ipucu"))
+        Text(dil.metin(kartHazir ? "kg.ipucu" : "kg.merkezGerekli"))
             .font(.system(size: 11, weight: .medium, design: .rounded))
-            .foregroundStyle(Tema.ikincil.opacity(0.85))
+            .foregroundStyle(kartHazir ? Tema.ikincil.opacity(0.85) : Tema.anaRenk.opacity(0.85))
+            .multilineTextAlignment(.center)
             .frame(maxWidth: .infinity)
     }
 }

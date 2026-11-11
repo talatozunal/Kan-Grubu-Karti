@@ -21,6 +21,7 @@
 "kg.kartPaylasimBaslik" = "Carte de groupe sanguin";
 "kg.kartiGoster" = "Afficher la carte";
 "kg.kisiBilgileri" = "INFORMATIONS DE LA CARTE";
+"kg.merkezGerekli" = "Saisissez le nom du centre de santé pour voir la carte.";
 "kg.onaylayan" = "Validé par";
 "kg.onaylayanIpucu" = "Nom du médecin validant";
 "kg.paylas" = "Partager ou enregistrer la carte";

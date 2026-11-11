@@ -21,6 +21,7 @@
 "kg.kartPaylasimBaslik" = "Kan Grubu Kartı";
 "kg.kartiGoster" = "Kartı Göster";
 "kg.kisiBilgileri" = "KART BİLGİLERİ";
+"kg.merkezGerekli" = "Kartı görmek için sağlık merkezi adını girin.";
 "kg.onaylayan" = "Onaylayan";
 "kg.onaylayanIpucu" = "Onaylayan hekimin adı";
 "kg.paylas" = "Kartı Paylaş veya Kaydet";

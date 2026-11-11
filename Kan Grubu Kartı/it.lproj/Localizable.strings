@@ -21,6 +21,7 @@
 "kg.kartPaylasimBaslik" = "Tessera del gruppo sanguigno";
 "kg.kartiGoster" = "Mostra la tessera";
 "kg.kisiBilgileri" = "DATI DELLA TESSERA";
+"kg.merkezGerekli" = "Inserisci il nome del centro sanitario per vedere la tessera.";
 "kg.onaylayan" = "Convalidato da";
 "kg.onaylayanIpucu" = "Nome del medico che convalida";
 "kg.paylas" = "Condividi o salva la tessera";

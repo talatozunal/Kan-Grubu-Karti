@@ -97,7 +97,7 @@ No storyboard or asset changes are needed.
 
 Button names in this README are shown in Turkish; the app uses the same terms in the selected language.
 
-1. Open the app and fill in **Sağlık Merkezi**, **Ad Soyad**, **Doğum Yeri**, **Doğum Tarihi**, **Kan Grubu** and **Onaylayan**.
+1. Open the app and fill in **Sağlık Merkezi**, **Ad Soyad**, **Doğum Yeri**, **Doğum Tarihi**, **Kan Grubu** and **Onaylayan**. **Sağlık Merkezi** is required: **Kartı Göster** stays disabled and a short hint is shown until it is filled in.
 2. Tap **Kartı Göster**. The card preview appears, centered on the screen.
 3. Tap **Kartı Paylaş veya Kaydet**.
 4. In the share sheet choose **Save Image** to keep it in Photos, or send it via Messages, Mail or AirDrop.

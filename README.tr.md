@@ -97,7 +97,7 @@ Storyboard veya görsel değişikliği gerekmez.
 
 Bu belgedeki buton adları Türkçe gösterilmiştir; uygulama seçili dilde aynı terimleri kullanır.
 
-1. Uygulamayı açın ve **Sağlık Merkezi**, **Ad Soyad**, **Doğum Yeri**, **Doğum Tarihi**, **Kan Grubu** ve **Onaylayan** alanlarını doldurun.
+1. Uygulamayı açın ve **Sağlık Merkezi**, **Ad Soyad**, **Doğum Yeri**, **Doğum Tarihi**, **Kan Grubu** ve **Onaylayan** alanlarını doldurun. **Sağlık Merkezi** zorunludur: doldurulana kadar **Kartı Göster** pasif kalır ve kısa bir uyarı gösterilir.
 2. **Kartı Göster** butonuna dokunun. Kart önizlemesi ekranın ortasında görünür.
 3. **Kartı Paylaş veya Kaydet** butonuna dokunun.
 4. Paylaşım sayfasında **Görseli Kaydet** ile Fotoğraflar'a kaydedin veya Mesajlar, Mail ya da AirDrop ile gönderin.

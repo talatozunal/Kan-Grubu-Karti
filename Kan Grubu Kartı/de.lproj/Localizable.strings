@@ -21,6 +21,7 @@
 "kg.kartPaylasimBaslik" = "Blutgruppen-Karte";
 "kg.kartiGoster" = "Karte anzeigen";
 "kg.kisiBilgileri" = "KARTENDATEN";
+"kg.merkezGerekli" = "Karte: Gesundheitszentrum eingeben.";
 "kg.onaylayan" = "Bestätigt von";
 "kg.onaylayanIpucu" = "Name des bestätigenden Arztes";
 "kg.paylas" = "Karte teilen oder sichern";
