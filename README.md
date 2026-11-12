@@ -11,6 +11,10 @@
 </p>
 
 <p align="center">
+  <a href="https://talatozunal.github.io/Kan-Grubu-Karti/"><strong>Website →</strong></a>
+</p>
+
+<p align="center">
   <b>English</b> · <a href="README.tr.md">Türkçe</a>
 </p>
 
